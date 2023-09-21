@@ -3,13 +3,13 @@
 	<meta charset="UTF-8">
 	<meta name="viewport" content="width=device-width, initial-scale=1.0">
 	<title>Registration Form</title>
-	<link rel="stylesheet" href="styles.css">
+	<link href="css/main.css" rel="stylesheet" media="all">
 	</head>
 	<body>
 		<div class="container">
 			<div class="registration-box">
 				<h2>Registration Form</h2>
-				<form action="#" method="POST">
+				<form action="#">
 					<div class="input-container">
 						<input type="text" name="name" required>
 						<label for="name">Full Name</label>
