@@ -2,7 +2,6 @@ var lock_form								=	0;
 var locked_form								=	"Please wait for the current request to process!";
 
 var regForm									=	[
-	{id:"reg_username", type:"alpha_numeric", min_len:8, max_len:15, compare:0},
 	{id:"reg_email", type:"email", min_len:10, max_len:40, compare:0},
 	{id:"reg_name", type:"alpha_numericspace", min_len:2, max_len:50, compare:0},
 	{id:"reg_password", type:"alpha_numeric_special", min_len:8, max_len:20, compare:1, compare_field:"reg_confirm_password"},
@@ -139,7 +138,7 @@ $(document).ready(function()
 						$("#login").html('Login');
 						setTimeout(function() 
 						{
-							// window.location	=	domain+"home.php";
+							window.location	=	domain+"home.php";
 						}, 500);
 					}
 				}
@@ -183,10 +182,10 @@ $(document).ready(function()
 					{
 						display_message(result.message,"success");
 						$("#register").html('Register');
-						// window.location		=	domain+"home.php";
-						// setTimeout(function() 
-						// {
-						// }, 2000);
+						setTimeout(function() 
+						{
+							window.location	=	domain+"home.php";
+						}, 500);
 					}
 				}
 			});
@@ -229,9 +228,7 @@ $(document).ready(function()
 					{
 						display_message(result.message,"success");
 						$("#reset_password").html('Reset Password');
-						// setTimeout(function() 
-						// {
-						// }, 2000);
+						$(".for_login_now").trigger("click");
 					}
 				}
 			});

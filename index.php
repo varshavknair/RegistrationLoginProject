@@ -1,5 +1,15 @@
 <?php
 	require_once((dirname(__FILE__)) . '/header.php');
+
+	if($_SESSION['user_details']['id']!="")
+	{
+		?>
+		<script>
+			window.location	=	domain+"/home.php";
+		</script>
+		<?php
+		exit;
+	}
 ?>
 		<div id="mainWrap">
 			<div id="xlogin" >
@@ -71,7 +81,7 @@
 				</form>
 				<form action="helpers/register.php" method="POST" id="regForm" class="form-horizontal">
 					<h1>Register Now</h1>
-					<div class="form-group">
+					<div class="form-group" style="margin-bottom: 10px;">
 						<div class="col-xs-12">
 							<div class="input-group">
 								<span class="input-group-addon"><i class="fa fa-user-tie fa-fw user_icons"></i></span>
@@ -85,17 +95,12 @@
 					<div class="form-group">
 						<div class="col-xs-12">
 							<div class="input-group img_wrapper">
-								<span class="input-group-addon"><i class="fa fa-image user_icons" style="left: 10px;top: 26px;"></i></span>
+								<span class="input-group-addon" style="padding-top: 0px;"><i class="fa fa-image user_icons" style="left: 10px;top: 26px;"></i></span>
 								<div class="col-md-6 form-group file-wrapper">
 									<input name="profile_img" id="reg_image" type="file" class="col form-control text-field-box mt-3" placeholder="Select Profile Image">
-									<label class="ml-3 " 
-									style="font-size: 13px;position: absolute;top: 0px;
-									font-family: 'Roboto', sans-serif;font-weight: 300;">Choose Profile Image</label>
+									<label class="ml-3">Choose Profile Image</label>
 
 								</div>
-							</div>
-							<div class="error-group">
-								<span id="reg_image_lbl" class="error_msg_lbl">&nbsp;</span>
 							</div>
 						</div>
 					</div>

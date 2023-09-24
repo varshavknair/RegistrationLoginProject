@@ -1,17 +1,22 @@
 body {
-  color: #4C5454;
-  font-family: "Open Sans", sans-serif;
-  background-color:#FFFFFF !important;
+	color: #4C5454;
+	font-family: "Open Sans", sans-serif;
+	background-color:#FFFFFF !important;
 }
 
 #xlogin {
-  border: 0px dotted #FFFFFF;
-  background-color: #E7E7E7;
+	border: 0px dotted #FFFFFF;
+	background-color: #E7E7E7;
 }
 
-#xlogin h3, #xlogin .formNotice span, #xlogin .formNotice2 span, #xlogin .formNotice span:hover, #xlogin .formNotice span:focus, .file-wrapper .ml-3
+#xlogin h3, #xlogin .formNotice span, #xlogin .formNotice2 span, #xlogin .formNotice span:hover, #xlogin .formNotice span:focus
 {
-  color: #4C5454 !important;
+	color: #4C5454 !important;
+}
+
+.file-wrapper .ml-3
+{
+	color: #999999 !important;
 }
 
 .btn-primary
@@ -38,12 +43,44 @@ body {
 	color: #FF715B;
 }
 
-.notifyjs-corner
+.notifyjs-bootstrap-base
 {
-	border-bottom: solid 1px #FFFFFF;
+	color: #FFFFFF !important;
 }
 
-.notifyjs-bootstrap-base
+.bg_profile
+{
+	background-color: #E7E7E7 !important;
+}
+
+#xlogin .input-group-addon
+{
+	background-color: #E7E7E7 !important;
+}
+
+.file-wrapper
+{
+	background-color: #FFFFFF;
+}
+
+.navbar-inverse
+{
+	color: #FFFFFF !important;
+	background-color: #7D80DA !important;
+}
+
+.navbar-inverse .navbar-nav > .active > a
+{
+	/* background-color: #6064D2 !important; */
+	background-color: #5054CE !important;
+}
+
+.navbar-inverse
+{
+	border-color: #7D80DA !important;
+}
+
+.navbar-inverse .navbar-nav > li > a, .navbar-inverse .navbar-brand
 {
 	color: #FFFFFF !important;
 }

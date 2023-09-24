@@ -1,4 +1,4 @@
-extra_url						=	"/FinalSubmit/",
+extra_url						=	"/",
 rest							=	location.host + extra_url,
 first							=	window.location.protocol + "//",
 domain							=	first + rest;
@@ -89,6 +89,12 @@ function validateForm(data)
 				{
 					response	=	0
 					$(key+"_lbl").html("Password must contain at least 1 alphabet, 1 number and 1 Special charecter");
+				}
+				else if((obj.compare==1) && (value!==($.trim($("#"+(obj.compare_field)).val()))))
+				{
+					response	=	0
+					$(key+"_lbl").html("Password does not match");
+					$("#"+(obj.compare_field)+"_lbl").html("Password does not match");
 				}
 			}
 		}

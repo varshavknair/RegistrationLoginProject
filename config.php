@@ -1,8 +1,18 @@
 <?php
+    session_start();
 	error_reporting(0);
 	define('UPLOADS', 'images/');
 	define('BASE', 'helpers/');
 	$extention				=	'';
+
+	if($_REQUEST['Debug']=='1')
+	{
+		error_reporting(0);
+	}
+	if($_REQUEST['session']=='1')
+	{
+		echo "<pre/>"; print_r($_SESSION); die;
+	}
 	if($_SERVER['SERVER_NAME']=="varshas-macbook-air.local")
 	{
 		$extention			=	"FinalSubmit/";
@@ -19,18 +29,18 @@
 	define('SYSTEM_PASSWORD', 'Varsha');
 
 	// developement environment
-	define('HOST', 'localhost');
-	define('USERNAME', 'root');
-	define('PASSWORD', '');
-	define('DBA', 'varsha_project');
-	define('ENVIRONMENT', 'development');
+// 	define('HOST', 'localhost');
+// 	define('USERNAME', 'root');
+// 	define('PASSWORD', '');
+// 	define('DBA', 'varsha_project');
+// 	define('ENVIRONMENT', 'development');
 
 
 	// production environment
 
-	// define('HOST', 'sql3.freemysqlhosting.net');
-	// define('USERNAME', 'sql3648018');
-	// define('PASSWORD', 'iQwRT3Vcpa');
-	// define('DBA', 'sql3648018');
-	// define('ENVIRONMENT', 'production');
+	define('HOST', 'localhost');
+	define('USERNAME', 'id21302431_varsha');
+	define('PASSWORD', 'Varsha@123');
+	define('DBA', 'id21302431_varshaproject');
+	define('ENVIRONMENT', 'production');
 ?>

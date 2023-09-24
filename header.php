@@ -12,7 +12,7 @@
 		<link rel="stylesheet" href="color.css" />
 
 		<script src="js/jquery.min.js"></script>
-		<script src="js/bootstrap.bundle.min.js"></script>
+		<script src="js/bootstrap.min.js"></script>
 		<script src="https://kit.fontawesome.com/5a67f8624b.js" crossorigin="anonymous"></script>
 		<script src="js/notify.min.js"></script>
 
