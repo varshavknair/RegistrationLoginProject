@@ -7,18 +7,21 @@
 		echo json_encode(array("success" => 0, "message" => "Email already registered. Please try to login"));
 	}
 
-	$img_path							=	upload_file($_FILES['profile_img']);
-	if(($img_path=="") || ($img_path==false))
-	{
-		echo json_encode(array("success" => 0, "message" => "There was an error uploading image. Upload a file less than 5KB"));
-		die;
-	}
 	$data								=	array(
 		'email_address'					=>	$_POST['email'],
 		'name'							=>	$_POST['name'],
-		'profile_picture'				=>	$img_path,
 		'password'						=>	encrypt($_POST['password'])
 	);
+	if($_FILES['profile_img']['tmp_name'])
+	{
+		$img_path						=	upload_file($_FILES['profile_img']);
+		if(($img_path=="") || ($img_path==false))
+		{
+			echo json_encode(array("success" => 0, "message" => "There was an error uploading image. Upload a file less than 5KB"));
+			die;
+		}
+		$data['profile_picture']		=	$img_path;
+	}
 
 	$result							    =	insert_query("users", $data);
 	
