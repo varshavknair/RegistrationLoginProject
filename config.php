@@ -7,7 +7,7 @@
 
 	if($_REQUEST['Debug']=='1')
 	{
-		error_reporting(0);
+		error_reporting(1);
 	}
 	if($_REQUEST['session']=='1')
 	{
