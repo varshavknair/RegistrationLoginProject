@@ -27,6 +27,7 @@ $(document).ready(function()
 	{
 		if(lock_form==0)
 		{
+			$(".notifyjs-corner").remove();
 			height							=	($("#regForm").height()) + 30;
 			$("#xlogin").css("height", height);
 			$("#regForm").fadeIn(700);
@@ -57,6 +58,7 @@ $(document).ready(function()
 	{
 		if(lock_form==0)
 		{
+			$(".notifyjs-corner").remove();
 			height							=	($("#logForm").height()) + 30;
 			$("#xlogin").css("height", height);
 			$("#logForm").fadeIn(900);
@@ -74,6 +76,7 @@ $(document).ready(function()
 	{
 		if(lock_form==0)
 		{
+			$(".notifyjs-corner").remove();
 			height							=	($("#resetForm").height()) + 30;
 			$("#xlogin").css("height", height);
 			$("#resetForm").fadeIn(700);
@@ -91,6 +94,7 @@ $(document).ready(function()
 	{
 		if(lock_form==0)
 		{
+			$(".notifyjs-corner").remove();
 			height							=	($("#logForm").height()) + 30;
 			$("#xlogin").css("height", height);
 			$("#logForm").fadeIn(900);
