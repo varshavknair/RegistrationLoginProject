@@ -1,15 +1,27 @@
 <?php
 	require_once((dirname(__FILE__)) . '/../config.php');
 
+	/*
+		Author			:	Varsha Nair
+		Parameters		:	$table - table name; $data - array of data needing to be inserted
+		Return			:	$insert_id - row id / if failed returns 0
+		Description		:	Common Insert query
+		Created on		:	23 Sep 2023
+	*/
 	function insert_query($table, $data)
 	{
 		$con						=	mysqli_connect(HOST,USERNAME,PASSWORD,DBA);
+		if ($con->connect_error)
+		{
+			return 0;
+		}
+
 		$key_str					=	"";
 		$value_str					=	"";
 		$sap						=	"";
 		foreach($data as $key => $row)
 		{
-			$cur_val				=	mysqli_real_escape_string($con, $row);
+			$cur_val				=	mysqli_real_escape_string($con, $row); // escape all special characters
 			$key_str				.=	$sap." ".$key;
 			$value_str				.=	$sap." '".$cur_val."'";
 			$sap					=	", ";
@@ -30,14 +42,26 @@
 		}
 	}
 
+	/*
+		Author			:	Varsha Nair
+		Parameters		:	$table - table name; $data - array of data needing to be inserted; $whr - array of data in where condition
+		Return			:	1 - success ; 2-> failure
+		Description		:	Common Insert query
+		Created on		:	23 Sep 2023
+	*/
 	function update_query($table, $data, $whr)
 	{
 		$con						=	mysqli_connect(HOST,USERNAME,PASSWORD,DBA);
+		if ($con->connect_error)
+		{
+			return 0;
+		}
+
 		$value_str					=	"";
 		$sap						=	"";
 		foreach($data as $key => $row)
 		{
-			$cur_val				=	mysqli_real_escape_string($con, $row);
+			$cur_val				=	mysqli_real_escape_string($con, $row); // escape all special characters
 			$value_str				.=	$sap.$key." = '".$cur_val."'";
 			$sap					=	", ";
 		}
@@ -47,7 +71,7 @@
 
 		foreach($whr as $key => $row)
 		{
-			$cur_val				=	mysqli_real_escape_string($con, $row);
+			$cur_val				=	mysqli_real_escape_string($con, $row); // escape all special characters
 			$where_str				.=	$sap.$key."='".$cur_val."'";
 			$sap					=	" AND ";
 		}
@@ -68,16 +92,27 @@
 		}
 	}
 
+	/*
+		Author			:	Varsha Nair
+		Parameters		:	$select - Select query ; $data - array of columns for where clause; $additional - additional conditions (eg: ORDER BY)
+		Return			:	$response - associative array of all records
+		Description		:	Fetch Data from DB - Select Query
+		Created on		:	23 Sep 2023
+	*/
 	function select_query($select, $data = array() , $additional = '')
 	{
 		$con						=	mysqli_connect(HOST,USERNAME,PASSWORD,DBA);
+		if ($con->connect_error)
+		{
+			return array();
+		}
 
 		$where_str					=	"";
 		$sap						=	"";
 
 		foreach($data as $key => $row)
 		{
-			$cur_val				=	mysqli_real_escape_string($con, $row);
+			$cur_val				=	mysqli_real_escape_string($con, $row); // escape all special characters
 			$where_str				.=	$sap.$key."='".$cur_val."'";
 			$sap					=	" AND ";
 		}
@@ -88,7 +123,7 @@
 
 		if ($result = mysqli_query($con, $sql))
 		{
-			// Fetch one and one row
+			// Fetching associative array from each row of the table
 			while ($row = mysqli_fetch_assoc($result))
 			{
 				$response[]			=	$row;
@@ -100,6 +135,13 @@
 		return $response;
 	}
 
+	/*
+		Author			:	Varsha Nair
+		Parameters		:	
+		Return			:	$ipaddress - IP Address
+		Description		:	Returns the client IP address
+		Created on		:	23 Sep 2023
+	*/
 	function get_client_ip()
 	{
 		$ipaddress = '';
@@ -122,6 +164,13 @@
 		return $ipaddress;
 	}
 
+	/*
+		Author			:	Varsha Nair
+		Parameters		:	$file - uploaded File ($_FILES[file_name])
+		Return			:	$disp_target_file - path of the file
+		Description		:	Image Upload function
+		Created on		:	23 Sep 2023
+	*/
 	function upload_file($file)
 	{
 		$target_dir				=	"images/";
@@ -146,13 +195,27 @@
 		}
 	}
 
+	/*
+		Author			:	Varsha Nair
+		Parameters		:	$length_of_string - size of the random string to be generated
+		Return			:	a random string from the below charecters of size $length_of_string
+		Description		:	Random string genrator
+		Created on		:	23 Sep 2023
+	*/
 	function random_strings($length_of_string)
 	{
 		$str_result				=	'0123456789ABCDEFGHIJKLMNOPQRSTUVWXYZabcdefghijklmnopqrstuvwxyz';
 		return substr(str_shuffle($str_result), 0, $length_of_string);
 	}
 
-	function verify_email($id, $to)
+	/*
+		Author			:	Varsha Nair
+		Parameters		:	$id - user_id (not used); $to - receipient
+		Return			:	
+		Description		:	Emailer : Triggered after registration is complete
+		Created on		:	23 Sep 2023
+	*/
+	function verify_email($to)
 	{
 		$subject				=	'Verify Email Address';
 		$message				=	'Click on the link to verify email : '.URL."verifyemail.php?id=".$to;
@@ -163,6 +226,13 @@
 		mail($to, $subject, $message, $headers);
 	}
 
+	/*
+		Author			:	Varsha Nair
+		Parameters		:	$password - password for the user; $to - receipient
+		Return			:	
+		Description		:	Emailer : Triggered after password is reset
+		Created on		:	23 Sep 2023
+	*/
 	function generate_password($password, $to)
 	{
 		$subject				=	'New Password Generated';
