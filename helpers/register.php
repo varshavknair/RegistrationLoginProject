@@ -8,7 +8,7 @@
 	}
 
 	$data								=	array(
-		'email_address'					=>	$_POST['email'],
+		'email_address'						=>	$_POST['email'],
 		'name'							=>	$_POST['name'],
 		'password'						=>	encrypt($_POST['password'])
 	);
@@ -20,29 +20,29 @@
 			echo json_encode(array("success" => 0, "message" => "There was an error uploading image. Upload a file less than 5KB"));
 			die;
 		}
-		$data['profile_picture']		=	$img_path;
+		$data['profile_picture']				=	$img_path;
 	}
 
-	$result							    =	insert_query("users", $data);
+	$result								=	insert_query("users", $data);
 	
 	if($result)
 	{
-	    $response						=	select_query("SELECT * FROM users", array("id" => $result));
-	    $_SESSION['user_details']		=	$response[0];
-		$_SESSION['user_details']['id']	=	encrypt($response[0]['id']);
+	    $response							=	select_query("SELECT * FROM users", array("id" => $result));
+	    $_SESSION['user_details']					=	$response[0];
+		$_SESSION['user_details']['id']				=	encrypt($response[0]['id']);
 		$PublicIP						=	get_client_ip();
 		$json							=	file_get_contents("http://ipinfo.io/$PublicIP/geo");
 		$json							=	json_decode($json, true);
 		$login_data						=	array(
 			'timezone'					=>	$json['timezone'],
-			'country_code'				=>	$json['country'],
+			'country_code'					=>	$json['country'],
 			'region'					=>	$json['region'],
 			'city'						=>	$json['city']
 		);
 		
 		verify_email($response[0]['email_address']);
-		$_SESSION['login_data']			=	$login_data;
-		$login_data['user_id']			=	$response[0]['id'];
+		$_SESSION['login_data']					=	$login_data;
+		$login_data['user_id']					=	$response[0]['id'];
 		unset($result, $response);
 		$result							=	insert_query("login_activity", $login_data);
 
