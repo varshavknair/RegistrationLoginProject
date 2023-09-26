@@ -2,7 +2,7 @@
 	require_once((dirname(__FILE__)) . '/common.php');
 
 	$data								=	array(
-		'email_address'					=>	$_POST['email']
+		'email_address'						=>	$_POST['email']
 	);
 
 	$result								=	select_query("SELECT id, email_address FROM users", $data);
