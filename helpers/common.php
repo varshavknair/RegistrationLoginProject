@@ -125,6 +125,34 @@
 
 	/*
 		Author			:	Varsha Nair
+		Parameters		:	$text - plain text
+		Return			:	$cipher - encrypted text
+		Description		:	Encrypts the text
+		Created on		:	23 Sep 2023
+	*/
+	function encrypt($text)
+	{
+		$cryptKey				=	'qJB0rGtIn5UB1xG03efyCp';
+		$cipher					=	base64_encode( mcrypt_encrypt( MCRYPT_RIJNDAEL_256, md5( $cryptKey ), $text, MCRYPT_MODE_CBC, md5( md5( $cryptKey ) ) ) );
+		return $cipher;
+	}
+
+	/*
+		Author			:	Varsha Nair
+		Parameters		:	$cipher - encrypted text
+		Return			:	$text - decrypted text
+		Description		:	Decrypts the text
+		Created on		:	23 Sep 2023
+	*/
+	function decrypt($cipher)
+	{
+		$cryptKey				=	'qJB0rGtIn5UB1xG03efyCp';
+		$text					=	rtrim( mcrypt_decrypt( MCRYPT_RIJNDAEL_256, md5( $cryptKey ), base64_decode($cipher), MCRYPT_MODE_CBC, md5( md5( $cryptKey ) ) ), "\0");
+		return $text;
+	}
+
+	/*
+		Author			:	Varsha Nair
 		Parameters		:	
 		Return			:	$ipaddress - IP Address
 		Description		:	Returns the client IP address
