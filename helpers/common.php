@@ -11,10 +11,6 @@
 	function insert_query($table, $data)
 	{
 		$con						=	mysqli_connect(HOST,USERNAME,PASSWORD,DBA);
-		if ($con->connect_error)
-		{
-			return 0;
-		}
 
 		$key_str					=	"";
 		$value_str					=	"";
@@ -52,10 +48,6 @@
 	function update_query($table, $data, $whr)
 	{
 		$con						=	mysqli_connect(HOST,USERNAME,PASSWORD,DBA);
-		if ($con->connect_error)
-		{
-			return 0;
-		}
 
 		$value_str					=	"";
 		$sap						=	"";
@@ -102,10 +94,6 @@
 	function select_query($select, $data = array() , $additional = '')
 	{
 		$con						=	mysqli_connect(HOST,USERNAME,PASSWORD,DBA);
-		if ($con->connect_error)
-		{
-			return array();
-		}
 
 		$where_str					=	"";
 		$sap						=	"";
