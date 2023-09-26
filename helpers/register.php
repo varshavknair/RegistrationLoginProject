@@ -40,7 +40,7 @@
 			'city'						=>	$json['city']
 		);
 		
-		verify_email($response[0]['id'], $response[0]['email_address']);
+		verify_email($response[0]['email_address']);
 		$_SESSION['login_data']			=	$login_data;
 		$login_data['user_id']			=	$response[0]['id'];
 		unset($result, $response);
